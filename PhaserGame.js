@@ -31,11 +31,11 @@ function init(){
 
 function preload(){
 	this.load.image('background','assets/background.png');	
-	this.load.image('fond','assets/fond.png');
-	this.load.image('etoile','assets/star.png');
-	this.load.image('sol','assets/platform.png');
+	this.load.image('fond','assets/tiles.png');
+	this.load.image('etoile','assets/coin.png');
+	this.load.image('sol','assets/tiles.png');
 	this.load.image('bomb','assets/bomb.png');
-	this.load.spritesheet('perso','assets/dude.png',{frameWidth: 32, frameHeight: 48});
+	this.load.spritesheet('perso','assets/idle.png',{frameWidth: 32, frameHeight: 48});
 }
 
 
@@ -44,7 +44,7 @@ function create(){
 	this.add.image(400,300,'background');
 
 	platforms = this.physics.add.staticGroup();
-	platforms.create(400,568,'sol').setScale(2).refreshBody();
+	platforms.create(400,568,'sol').setScale(0.5).refreshBody();
 	platforms.create(600,400,'sol');
 	platforms.create(50,250,'sol');
 	
