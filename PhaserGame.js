@@ -80,13 +80,13 @@ function create(){
 	});
 
 	this.enemies = this.add.group({
-    key: 'dragon',
-    repeat: 2,
+    key: 'enmi',
+    repeat: 3,
     setXY: {
       x: 110,
       y: 100,
       stepX: 80,
-      stepY: 20
+	  setScale: {x: 0.13, y: 0.13},
     }
   });
 	
@@ -152,10 +152,5 @@ function collectStar(player, star){
 		var x = (player.x < 400) ? 
 			Phaser.Math.Between(400,800):
 			Phaser.Math.Between(0,400);
-		var enmi = enmi.create(x, 16, 'enmi');
-		enmi.setBounce(000);
-		enmi.setScale(0.30);
-		enmi.setCollideWorldBounds(true);
-		enmi.setVelocity(Phaser.Math.Between(-200, 200), 20);
 	}
 }
