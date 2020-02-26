@@ -31,11 +31,11 @@ function init(){
 
 function preload(){
 	this.load.image('background','assets/background.png');	
-	this.load.image('fond','assets/tiles.png');
+	this.load.image('fond','assets/fond.png');
 	this.load.image('etoile','assets/coin.png');
 	this.load.image('sol','assets/tiles.png');
 	this.load.image('bomb','assets/bomb.png');
-	this.load.spritesheet('perso','assets/idle.png',{frameWidth: 32, frameHeight: 48});
+	this.load.spritesheet('perso','assets/run.png',{frameWidth: 150, frameHeight: 150});
 }
 
 
@@ -44,13 +44,18 @@ function create(){
 	this.add.image(400,300,'background');
 
 	platforms = this.physics.add.staticGroup();
-	platforms.create(400,568,'sol').setScale(0.5).refreshBody();
-	platforms.create(600,400,'sol');
-	platforms.create(50,250,'sol');
+	platforms.create(400,598,'sol').setScale(2,0.15).refreshBody();
+	platforms.create(250,500,'sol').setScale(0.15).refreshBody();
+	platforms.create(170,350,'sol').setScale(0.25,0.15).refreshBody();
+	platforms.create(370,220,'sol').setScale(0.15).refreshBody();
+	platforms.create(560,200,'sol').setScale(0.15).refreshBody();
+	platforms.create(600,400,'sol').setScale(0.15).refreshBody();
+	platforms.create(50,250,'sol').setScale(0.15).refreshBody();
 	
 	player = this.physics.add.sprite(100,450,'perso');
 	player.setCollideWorldBounds(true);
 	player.setBounce(0.2);
+	player.setScale(0.30);
 	player.body.setGravityY(000);
 	this.physics.add.collider(player,platforms);
 	
@@ -58,7 +63,7 @@ function create(){
 	
 	this.anims.create({
 		key:'left',
-		frames: this.anims.generateFrameNumbers('perso', {start: 0, end: 3}),
+		frames: this.anims.generateFrameNumbers('perso', {start: 0, end: 18}),
 		frameRate: 10,
 		repeat: -1
 	});
@@ -72,6 +77,7 @@ function create(){
 	stars = this.physics.add.group({
 		key: 'etoile',
 		repeat:11,
+		setScale: {x: 0.13, y: 0.13},
 		setXY: {x:12,y:0,stepX:70}
 	});
 	
@@ -90,11 +96,11 @@ function update(){
 	if(cursors.left.isDown){
 		player.anims.play('left', true);
 		player.setVelocityX(-300);
-		player.setFlipX(false);
+		player.setFlipX(true);
 	}else if(cursors.right.isDown){
 		player.setVelocityX(300);
 		player.anims.play('left', true);
-		player.setFlipX(true);
+		player.setFlipX(false);
 	}else{
 		player.anims.play('stop', true);
 		player.setVelocityX(0);
@@ -126,6 +132,7 @@ function collectStar(player, star){
 			Phaser.Math.Between(0,400);
 		var bomb = bombs.create(x, 16, 'bomb');
 		bomb.setBounce(1);
+		bomb.setScale(0.30);
 		bomb.setCollideWorldBounds(true);
 		bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
 	}
