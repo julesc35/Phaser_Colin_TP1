@@ -1,0 +1,20 @@
+sources: inspecter les elements > console
+
+
+GET http://192.168.0.14:8080/favicon.ico 404 (Not Found)
+phaser.js:39287 GET http://192.168.0.14:8080/assets/sky.png 404 (Not Found)
+phaser.js:39287 GET http://192.168.0.14:8080/assets/fond.png 404 (Not Found)
+phaser.js:39287 GET http://192.168.0.14:8080/assets/star.png 404 (Not Found)
+phaser.js:39287 GET http://192.168.0.14:8080/assets/dude.png 404 (Not Found)
+phaser.js:39287 GET http://192.168.0.14:8080/assets/platform.png 404 (Not Found)
+phaser.js:73195 Uncaught TypeError: Cannot read property 'texture' of undefined
+    at Animation.setCurrentFrame (phaser.js:73195)
+    at Animation.updateFrame (phaser.js:73224)
+    at Animation.load (phaser.js:54133)
+    at AnimationManager.load (phaser.js:53129)
+    at Animation.load (phaser.js:72733)
+    at Animation.play (phaser.js:72833)
+    at Scene.update (monJeu.js:99)
+    at Systems.step (phaser.js:27164)
+    at SceneManager.update (phaser.js:46776)
+    at Game.step (phaser.js:109330)
